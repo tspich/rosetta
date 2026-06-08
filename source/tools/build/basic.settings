@@ -447,6 +447,11 @@ settings = {
         "appends" : {
             "flags" : {
                 "warn" : [
+                    # gcc 15 emits new warnings beyond the per-warning list below
+                    # (old Rosetta + new toolchain). Appended after the base
+                    # -Werror (line ~182), so it un-promotes all warnings to
+                    # non-fatal for gcc>=13 only; older compilers keep -Werror. -- ts, 2026
+                    "Wno-error",
                     "Wno-error=array-bounds=", # There's a probably spurious "__builtin_memmove() forming offset is out of the bounds" warning for vector1<bool>
                     "Wno-error=stringop-overread", # Issue with Eigen
                     "Wno-error=restrict", # Issue with json-spirit
