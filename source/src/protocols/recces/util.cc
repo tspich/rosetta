@@ -52,6 +52,15 @@ utility::vector1<core::scoring::ScoreType> const & get_scoretypes() {
 	scoretypes.push_back( geom_sol_fast );
 	scoretypes.push_back( stack_elec );
 	scoretypes.push_back( fa_elec_rna_phos_phos );
+	// --- appended for rna_hires reweighting (Case B); append-only so the
+	//     first 10 column positions stay == the turner fit. These 5 are the
+	//     additive rna_hires terms not already cached above. Note geom_sol is
+	//     the full term, distinct from the geom_sol_fast slot above. -- ts, 2026
+	scoretypes.push_back( geom_sol );
+	scoretypes.push_back( rna_sugar_close );
+	scoretypes.push_back( hbond_sr_bb_sc );
+	scoretypes.push_back( hbond_lr_bb_sc );
+	scoretypes.push_back( ch_bond );
 	return scoretypes;
 }
 
